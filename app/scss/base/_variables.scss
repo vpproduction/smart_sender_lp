@@ -1,0 +1,63 @@
+// COLORS
+
+$white:#ffffff;
+// PALLETE
+$blue--casual:rgba(1,94,109,1);
+$blue--dark:rgba(1,94,180,1);
+$blue--dark-alpha-20:rgba(1,94,180,0.2);
+$blue--dark-alpha-35:rgba(1,94,180,0.35);
+$blue--light:rgba(146,161,189,1);
+$blue--saturate:rgba(0,128,247,1);
+$blue--overlay:rgba(0,128,247,0.4);
+$blue--saturete-alpha-38:rgba(0,128,247,0.38);
+$blue-sky:rgba(77, 165, 246,1);
+
+$meth-32:rgba(49, 127, 203,0.32);
+$orange:rgba(237,138,25,1);
+
+$grey:rgba(146,146,146,1);
+$matterhorn:rgba(81,81,81,1);
+$licorice:rgba(51,59,69,1);
+$licorice-alpha-15:rgba(51,59,69,0.2);
+
+
+$white-alpha-95: rgba(255,255,255,0.95);
+// THEME
+
+$color-primary:	$blue--saturate;
+
+
+// $color-accent:	$patina;
+// $color-background:	$white
+// $color-background-shade:	$iron
+// $color-background-invert:	$hopbush
+ $color-text:	$grey;
+// $color-text-weak:	$regent-grey
+ $color-text-strong:	$blue--dark;
+ $color-text-heading:$blue--light;
+ $color-btn-background:$blue--dark;
+ $color-btn-shadow:$blue--dark-alpha-20;
+ $color-btn-shadow-inset:$blue--dark-alpha-35;
+$color-overlay:$blue--overlay;
+ $color-box-shadow-outer: $licorice-alpha-15;
+ $color-text-important:$matterhorn;
+ $color-text-shadow:$blue--saturete-alpha-38;
+ $color-gradient:$blue-sky;
+	$color-box-shadow-bottom:$meth-32;
+	$color-sticker-background:$white-alpha-95;
+// $color-text-invert:	rgba($color-background, .75)
+// $color-text-strong-invert:	$color-background
+// $color-text-link:	$color-primary
+// $color-text-link-visited:	$bouquet
+// $color-text-link-hover:	$midnight-blue
+// $color-border:	$iron
+
+
+
+// TEXT 
+$default-font: "Roboto", sans-serif;
+$basic-fs-xs:14px;
+$basic-fs:18px;
+
+
+//MARGINATOR

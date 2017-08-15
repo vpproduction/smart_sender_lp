@@ -1,0 +1,221 @@
+// Helper function for the normalize() mixin.
+@function _normalize-include($section, $exclude: null) {
+  // Initialize the global variables needed by this function.
+  @if not global_variable_exists(_normalize-include) {
+    $_normalize-include: () !global;
+    $_normalize-exclude: () !global;
+  }
+  // Since we are given 2 parameters, set the global variables.
+  @if $exclude != null {
+    $include: $section;
+    // Sass doesn't have static variables, so the work-around is to stuff these
+    // values into global variables so we can access them in future calls.
+    $_normalize-include: if(type-of($include) == 'list', $include, ($include)) !global;
+    $_normalize-exclude: if(type-of($exclude) == 'list', $exclude, ($exclude)) !global;
+    @return true;
+  }
+
+  // Check if $section is in the $include list.
+  @if index($_normalize-include, $section) {
+    @return true;
+  }
+  // If $include is set to (all), make sure $section is not in $exclude.
+  @else if not index($_normalize-exclude, $section) and index($_normalize-include, all) {
+    @return true;
+  }
+  @return false;
+}
+
+@mixin normalize($include: (all), $exclude: ()) {
+  // Initialize the helper function by passing it this mixin's parameters.
+  $init: _normalize-include($include, $exclude);
+
+  // If we've customized any font variables, we'll need extra properties.
+  @if $base-line-height != 24px
+    or $base-unit != 'em'
+    or $h2-font-size != 1.5  * $base-font-size
+    or $h3-font-size != 1.17 * $base-font-size
+    or $h4-font-size != 1    * $base-font-size
+    or $h5-font-size != 0.83 * $base-font-size
+    or $h6-font-size != 0.67 * $base-font-size {
+    $normalize-vertical-rhythm: true !global;
+  }
+
+  /*! normalize-scss | MIT/GPLv2 License | bit.ly/normalize-scss */
+
+  @if _normalize-include(document) {
+    /* Document
+       ========================================================================== */
+
+    html {
+      @if $base-font-family {
+        /* Change the default font family in all browsers (opinionated). */
+        font-family: $base-font-family;
+      }
+      @if $base-font-size != 16px or $normalize-vertical-rhythm {
+        // Correct old browser bug that prevented accessible resizing of text
+        // when root font-size is set with px or em.
+        font-size: ($base-font-size / 16px) * 100%;
+      }
+      @if $normalize-vertical-rhythm {
+        line-height: ($base-line-height / $base-font-size) * 1em; /* 1 */
+      }
+      @else {
+        line-height: 1.15; 
+      }
+      -ms-text-size-adjust: 100%; 
+      -webkit-text-size-adjust: 100%; 
+    }
+  }
+
+  @if _normalize-include(sections) {
+    /* Sections
+       ========================================================================== */
+    body {
+       max-width: 1920px;
+      margin: 0 auto;
+    }
+
+    article,
+    aside,
+    footer,
+    header,
+    nav,
+    section {
+      display: block;
+    }
+
+    h1 {
+      @include normalize-font-size($h1-font-size);
+      @if $normalize-vertical-rhythm {
+        @include normalize-line-height($h1-font-size);
+      }
+
+      @if $normalize-vertical-rhythm {
+        /* Set 1 unit of vertical rhythm on the top and bottom margins. */
+        @include normalize-margin(1 0, $h1-font-size);
+      }
+      @else {
+        margin: 0.67em 0;
+      }
+    }
+
+    @if $normalize-vertical-rhythm {
+      h2 {
+        @include normalize-font-size($h2-font-size);
+        @include normalize-line-height($h2-font-size);
+        @include normalize-margin(1 0, $h2-font-size);
+      }
+
+      h3 {
+        @include normalize-font-size($h3-font-size);
+        @include normalize-line-height($h3-font-size);
+        @include normalize-margin(1 0, $h3-font-size);
+      }
+
+      h4 {
+        @include normalize-font-size($h4-font-size);
+        @include normalize-line-height($h4-font-size);
+        @include normalize-margin(1 0, $h4-font-size);
+      }
+
+      h5 {
+        @include normalize-font-size($h5-font-size);
+        @include normalize-line-height($h5-font-size);
+        @include normalize-margin(1 0, $h5-font-size);
+      }
+
+      h6 {
+        @include normalize-font-size($h6-font-size);
+        @include normalize-line-height($h6-font-size);
+        @include normalize-margin(1 0, $h6-font-size);
+      }
+    }
+  }
+
+  @if _normalize-include(grouping) {
+    /* Grouping content
+       ========================================================================== */
+
+    @if $normalize-vertical-rhythm {
+    /**
+     * Add the correct display in IE.
+     */
+
+    main {
+      display: block;
+    }
+
+    @if $normalize-vertical-rhythm {
+      /**
+       * Set 1 unit of vertical rhythm on the top and bottom margin.
+       */
+
+      p,
+      pre {
+        @include normalize-margin(1 0);
+      }
+    }
+
+    /**
+     * 1. Correct the inheritance and scaling of font size in all browsers.
+     * 2. Correct the odd `em` font sizing in all browsers.
+     */
+
+    pre {
+      font-family: monospace, monospace; /* 1 */
+      font-size: 1em; /* 2 */
+    }
+  }
+
+  @if _normalize-include(links) {
+    /* Links
+       ========================================================================== */
+
+    a {
+      background-color: transparent; 
+      -webkit-text-decoration-skip: objects; 
+        text-decoration: none;
+      color: inherit;
+    }
+  }
+
+  @if _normalize-include(text) {
+    /* Text-level semantics
+       ========================================================================== */
+
+    /**
+     * Add the correct font weight in Chrome, Edge, and Safari.
+     */
+    b,
+    strong {
+      font-weight: bolder;
+    }
+
+  }
+
+  @if _normalize-include(embedded) {
+    /* Embedded content
+       ========================================================================== */
+    img {
+      border-style: none;
+      max-width: 100%;
+    }
+    svg:not(:root) {
+      overflow: hidden;
+    }
+  }
+  @if _normalize-include(hidden) {
+    /* Hidden
+       ========================================================================== */
+
+    /**
+     * Add the correct display in IE 10-.
+     */
+
+    [hidden] {
+      display: none;
+    }
+  }
+}
+}

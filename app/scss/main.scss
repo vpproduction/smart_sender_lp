@@ -1,0 +1,97 @@
+/* VENDOR - Default fall-backs and external files.
+========================================================================== */
+
+@import "vendor/normalize/_import-now";
+@import "vendor/slick";
+
+// @import 'vendor/_normalize.scss';
+/* BASE - Base Variable file along with starting point Mixins and Placeholders.
+========================================================================== */
+
+@import 'base/_variables.scss';
+@import 'base/_mixins.scss';
+@import 'base/_placeholders.scss';
+
+
+/* FRAMEWORK - Structure and layout files.
+========================================================================== */
+
+@import 'framework/_grid.scss';
+@import 'framework/_typography.scss';
+@import 'framework/_layout.scss';
+@import 'framework/_breakpoints.scss';
+
+/* MODULES - Re-usable site elements.
+========================================================================== */ 
+
+@import 'modules/_buttons.scss';
+ @import 'modules/_ui-elements.scss';
+// @import 'modules/_tabs.scss';
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+		&:before, &:after {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+}
+
+*::-webkit-input-placeholder {
+	color: #666;
+	opacity: 1;
+
+}
+	
+*:-moz-placeholder {
+		color: #666;
+	opacity: 1;
+
+}
+
+*::-moz-placeholder {
+		color: #666;
+	opacity: 1;
+}
+
+
+*:-ms-input-placeholder {
+		color: #666;
+	opacity: 1;
+}
+
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid {
+		color: #666;
+}
+
+body input:required:valid,
+body textarea:required:valid {
+		color: #666;
+}
+
+
+html, body {
+		height: 100%;
+}
+
+
+body {
+		font-size: 16px;
+	min-width: 320px;
+	position: relative;
+	line-height: 1.75;
+	font-family: $default-font;
+	overflow-x: hidden;
+	opacity: 1;
+}
+
+
+.img-responsive {
+		display: block;
+	max-width: 100%;
+	height: auto;
+}

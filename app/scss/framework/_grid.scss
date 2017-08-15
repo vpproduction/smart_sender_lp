@@ -1,0 +1,25 @@
+
+
+
+.flex {
+	@include flexbox();
+
+}
+
+
+.container {
+	width:90%;
+	max-width: 610px;
+	margin:0 auto;
+	@include mq(tablet) {
+		width: 90%;
+		max-width: 940px;
+	}
+	@include mq(tablet-wide) {
+		width:92%;
+		max-width: 1260px;
+	}
+	@include mq(desktop-wide) {
+		max-width: 1760px;
+	}
+}

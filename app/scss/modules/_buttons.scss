@@ -1,0 +1,82 @@
+
+.btn-base-rounded {
+	box-sizing:border-box;
+	position:relative;
+	display: inline-block;
+	font-size:1.2rem;
+	text-align:center;
+	padding:1.3rem 0;
+	background-color: $color-btn-background;
+	color:$white;
+	@include border-radius(40px,all)
+	cursor:pointer;
+			@extend %box-shadow-blue--blur;
+			font-size: 1.33rem;
+			@include mq(phone,min) {
+				padding: .75rem 0;
+			}
+		@include mq(phone-wide,min) {
+				padding: 1rem 0;
+				font-size: 1.5rem;
+			}
+			@include mq(tablet-small,min) {
+				font-size: 1.66rem;
+				padding:  .65em 0em;
+				@include border-radius(36px,all)
+			}
+			@include mq(tablet-small,min) {
+				padding:  .75em 0em;
+			}
+}
+
+
+.pseudo-btn-rounded {
+	box-sizing:border-box;
+	padding: .5em 0;
+	background-color:$color-primary;
+	color:$white;
+	font-size:1.36rem;
+	padding: .7rem 0;
+	@include border-radius(20px, all)
+	@include mq (tablet-small,min) {
+		font-size:1.66rem;
+		padding: .5em 0;
+		@include border-radius(30px,all);
+	}
+	@include mq (tablet,min) {
+		font-size: 1.11rem;
+	}
+@extend %box-shadow-blue--blur;
+}
+.pseudo-btn-circle {
+		@include flex(0 0 43px);
+    	height: 43px;
+	background-color:$color-primary;
+	@include border-radius(50%,all);
+	@include mq(tablet-small,min) {
+			 	@include flex-basis(66px);
+    	height: 66px;
+		}
+		@include mq(tablet,min) {
+				@include flex-basis(44px);
+    	height: 44px;
+		}
+	span {
+		width: 20px;
+		height: 14px;
+		margin:auto;
+		background:url(../img/checked.png) no-repeat center center;
+	 background-size: cover;
+		@include mq(tablet-small,min) {
+			width:40px;
+			height: 30px;
+		}
+		@include mq(tablet,min) {
+			width:24px;
+			height: 18px;
+		}
+	}
+	@extend %box-shadow-blue--blur;
+}
+
+
